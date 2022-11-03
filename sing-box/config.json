@@ -67,6 +67,11 @@
     "geosite": {},
     "auto_detect_interface": true
   },
-  "experimental": {}
+  "experimental": {
+    "clash_api": {
+      "external_controller": "127.0.0.1:8081",
+      "external_ui": "yacd/public/"
+    }
+  }
 }
 
