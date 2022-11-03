@@ -1,0 +1,72 @@
+{
+  "log": {
+    "level": "info",
+    "output": "box.log",
+    "timestamp": true
+  },
+  "dns": {
+    "servers": [
+      {
+        "tag": "cloudflare",
+        "address": "1.1.1.1",
+        "address_strategy": "prefer_ipv4",
+        "strategy": "prefer_ipv4"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "vmess",
+      "tag": "vmess-ws-in",
+      "listen": "::",
+      "listen_port": 80,
+      "tcp_fast_open": true,
+      "udp_timeout": 300,
+      "domain_strategy": "prefer_ipv4",
+      "users": [
+        {
+          "name": "D1",
+          "uuid": "b0940f87-2c9f-4fc9-9d06-750e2f94ba1e"
+        }
+      ],
+      "transport": {
+        "type": "ws",
+        "path": "/zafkiel"
+      }
+    },
+    {
+      "type": "hysteria",
+      "tag": "hysteria-in",
+      "listen": "::",
+      "listen_port": 443,
+      "tcp_fast_open": true,
+      "udp_timeout": 300,
+      "domain_strategy": "prefer_ipv4",
+      "up": "1 Gbps",
+      "up_mbps": 1000,
+      "down": "1 Gbps",
+      "down_mbps": 1000,
+      "obfs": "love kurumi tokisaki",
+      "auth_str": "Zafkiel",
+      "tls": {
+        "enabled": true,
+        "server_name": "Zafkiel",
+        "certificate_path": "cert.pem",
+        "key_path": "key.pem"
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    }
+  ],
+  "route": {
+    "geoip": {},
+    "geosite": {},
+    "auto_detect_interface": true
+  },
+  "experimental": {}
+}
+
