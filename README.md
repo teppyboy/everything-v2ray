@@ -11,4 +11,4 @@ There are currently 2 app configs
 They are generated dummy certificate, replace with your own if you wish to pass the TLS check.
 
 ## Web UI
-There are yacd and clash-dashboard available by default
+There are yacd and clash-dashboard available, by default it uses yacd.

@@ -12,6 +12,19 @@
         "address_strategy": "prefer_ipv4",
         "strategy": "prefer_ipv4"
       }
+    ],
+    "rules": [
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.haishan.me"
+        ],
+        "server": "local"
+      },
+      {
+        "clash_mode": "direct",
+        "server": "local"
+      }
     ]
   },
   "inbounds": [
@@ -21,6 +34,7 @@
       "listen": "::",
       "listen_port": 80,
       "tcp_fast_open": true,
+      "udp_fragment": true,
       "udp_timeout": 300,
       "domain_strategy": "prefer_ipv4",
       "users": [
@@ -40,6 +54,7 @@
       "listen": "::",
       "listen_port": 443,
       "tcp_fast_open": true,
+      "udp_fragment": true,
       "udp_timeout": 300,
       "domain_strategy": "prefer_ipv4",
       "up": "1 Gbps",
@@ -47,7 +62,16 @@
       "down": "1 Gbps",
       "down_mbps": 1000,
       "obfs": "love kurumi tokisaki",
-      "auth_str": "Zafkiel",
+      "users": [
+        {
+          "name": "D1",
+          "auth_str": "zafkiel"
+        },
+        {
+          "name": "Nino",
+          "auth_str": "5tobun"
+        }
+      ],
       "tls": {
         "enabled": true,
         "server_name": "Zafkiel",
@@ -59,18 +83,37 @@
   "outbounds": [
     {
       "type": "direct",
-      "tag": "direct-out"
+      "tag": "direct-out",
+      "udp_fragment": true,
+      "connect_timeout": "15s",
+      "domain_strategy": "prefer_ipv4"
     }
   ],
   "route": {
     "geoip": {},
     "geosite": {},
+    "rules": [
+      {
+        "clash_mode": "direct",
+        "outbound": "direct-out"
+      },
+      {
+        "domain": [
+          "clash.razord.top",
+          "yacd.haishan.me"
+        ],
+        "outbound": "direct-out"
+      }
+    ],
     "auto_detect_interface": true
   },
   "experimental": {
     "clash_api": {
-      "external_controller": "127.0.0.1:8081",
-      "external_ui": "yacd/public/"
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "yacd/public/",
+      "store_selected": true,
+      "direct_io": true,
+      "cache_file": ""
     }
   }
 }
