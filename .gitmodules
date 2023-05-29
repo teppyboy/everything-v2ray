@@ -1,6 +1,3 @@
 [submodule "sing-box/clash-dashboard"]
 	path = sing-box/clash-dashboard
 	url = https://github.com/Dreamacro/clash-dashboard.git
-[submodule "sing-box/yacd"]
-	path = sing-box/yacd
-	url = https://github.com/haishanh/yacd
