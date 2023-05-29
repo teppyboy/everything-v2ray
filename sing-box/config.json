@@ -87,6 +87,12 @@
       "connect_timeout": "15s",
       "udp_fragment": true,
       "domain_strategy": "prefer_ipv4"
+    },
+    {
+      "type": "direct",
+      "tag": "clash-api",
+      "override_address": "127.0.0.1",
+      "override_port": 9090
     }
   ],
   "route": {
@@ -102,7 +108,7 @@
           "clash.razord.top",
           "yacd.haishan.me"
         ],
-        "outbound": "direct-out"
+        "outbound": "clash-api"
       }
     ],
     "auto_detect_interface": true
