@@ -46,7 +46,10 @@
       "security": "auto",
       "transport": {
         "type": "ws",
-        "path": "/zafkiel"
+        "path": "/zafkiel",
+        "headers": {
+          "Host": "dl.kgvn.garenanow.com"
+        }
       }
     },
     {
