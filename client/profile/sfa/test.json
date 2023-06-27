@@ -1,0 +1,71 @@
+{
+  "dns": {
+    "servers": [
+      {
+        "tag": "cf",
+        "address": "tls://1.1.1.1",
+        "address_strategy": "prefer_ipv4",
+        "strategy": "prefer_ipv4"
+      },
+      {
+        "tag": "local",
+        "address": "223.5.5.5",
+        "detour": "direct-out"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "tag": "tun-in",
+      "mtu": 9000,
+      "inet4_address": "172.20.0.1/30",
+      "auto_route": true,
+      "strict_route": true,
+      "exclude_package": "com.android.captiveportallogin",
+      "udp_timeout": 300,
+      "stack": "system",
+      "platform": {
+        "http_proxy": {
+          "server": "127.0.0.1",
+          "server_port": 9080
+        }
+      },
+      "domain_strategy": "prefer_ipv4"
+    }
+  ],
+  "outbounds": [
+    {
+      "type": "vmess",
+      "tag": "vmess-out",
+      "udp_fragment": true,
+      "domain_strategy": "prefer_ipv4",
+      "server": "127.0.0.1",
+      "server_port": 80,
+      "uuid": "b0940f87-2c9f-4fc9-9d06-750e2f94ba1e",
+      "security": "auto",
+      "transport": {
+        "type": "ws",
+        "path": "/zafkiel"
+      }
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    },
+    {
+      "type": "direct",
+      "tag": "direct-out"
+    }
+  ],
+  "route": {
+    "rules": [
+      {
+        "port": 53,
+        "outbound": "dns-out"
+      }
+    ],
+    "auto_detect_interface": true
+  }
+}
+

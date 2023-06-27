@@ -1,3 +1,4 @@
 *.log
 *.zone
 cache.db
+yacd/

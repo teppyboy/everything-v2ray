@@ -39,7 +39,7 @@
       "domain_strategy": "prefer_ipv4",
       "users": [
         {
-          "name": "D1",
+          "name": "Default",
           "uuid": "b0940f87-2c9f-4fc9-9d06-750e2f94ba1e"
         }
       ],
