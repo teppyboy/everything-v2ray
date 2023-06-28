@@ -24,7 +24,7 @@
       "strict_route": true,
       "exclude_package": "com.android.captiveportallogin",
       "udp_timeout": 300,
-      "stack": "system",
+      "stack": "gvisor",
       "platform": {
         "http_proxy": {
           "server": "150.136.91.11",
