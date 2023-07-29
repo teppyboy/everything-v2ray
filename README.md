@@ -33,7 +33,7 @@ The one below is for testing only, you need to host the server yourself.
 
 ### SagerNet / Matsuri
 
-> Copy the URL in `raw` to the clipboard and paste it into the app.
+> Copy the whole content in the `raw` URL to the clipboard and paste it into the app.
 
 + [vpn-us](client/profile/sagernet/vpn-us.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sagernet/vpn-us.json)
 + [vpn-hk-gce](client/profile/sagernet/vpn-hk-gce.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sagernet/vpn-hk-gce.json)
@@ -42,6 +42,17 @@ The one below is for testing only, you need to host the server yourself.
 The one below is for testing only, you need to host the server yourself.
 
 + [localhost](client/profile/sagernet/test.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sagernet/test.json)
+
+### v2rayNG (and almost all v2ray clients)
+
+> You can use subscription URL in v2rayNG, which is more convenient, by copying the URL in `raw` to the clipboard and paste it into the app.
+> Copy the whole content in the `config` URL or `raw` URL to the clipboard and paste it into the app.
+
++ [vpn-us](client/profile/v2rayng/vpn-us.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us.json)
++ [vpn-hk-gce](client/profile/v2rayng/vpn-hk-gce.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-hk-gce) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-hk-gce.json)
++ [vpn-vn](client/profile/v2rayng/vpn-vn.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-vn) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-vn.json)
+
++ [subscription](client/profile/v2rayng/subscription.txt) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/subscription.txt)
 
 ## Certificate
 
