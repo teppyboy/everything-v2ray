@@ -8,8 +8,12 @@ then
     exit
 fi
 echo "Copying config..."
+mkdir -p /usr/local/etc/sing-box
 cp -rf ./sing-box/config.json /usr/local/etc/sing-box/config.json
+echo "Copying config (system package)..."
+cp -rf ./sing-box/config.json /etc/sing-box/config.json
 echo "Copying dummy ceritificate (for Hysteria support)..."
+mkdir -p /var/lib/sing-box
 cp -rf ./sing-box/cert.pem /var/lib/sing-box/cert.pem
 cp -rf ./sing-box/key.pem /var/lib/sing-box/key.pem
 echo "Done."

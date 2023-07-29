@@ -27,7 +27,7 @@
       "stack": "gvisor",
       "platform": {
         "http_proxy": {
-          "server": "116.111.113.94",
+          "server": "35.215.183.30",
           "server_port": 9080
         }
       },
@@ -40,7 +40,7 @@
       "tag": "vmess-out",
       "udp_fragment": true,
       "domain_strategy": "prefer_ipv4",
-      "server": "116.111.113.94",
+      "server": "35.215.183.30",
       "server_port": 80,
       "uuid": "b0940f87-2c9f-4fc9-9d06-750e2f94ba1e",
       "security": "auto",
