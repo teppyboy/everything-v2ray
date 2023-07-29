@@ -22,7 +22,7 @@ def main():
             "name": "Zafkiel / HK (GCE)",
         },
         "vpn-vn.json": {
-            "ip": "116.111.113.94",
+            "ip": "tretrauit.duckdns.org",
             "name": "Zafkiel / VN",
         },
     }
