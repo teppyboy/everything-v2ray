@@ -1,0 +1,155 @@
+{
+    "dns": {
+      "disableFallbackIfMatch": true,
+      "hosts": {},
+      "queryStrategy": "UseIPv4",
+      "servers": [
+        {
+          "address": "tls://1.1.1.1",
+          "concurrency": true
+        }
+      ]
+    },
+    "inbounds": [
+      {
+        "listen": "0.0.0.0",
+        "port": 2080,
+        "protocol": "socks",
+        "settings": {
+          "auth": "noauth",
+          "udp": true
+        },
+        "tag": "socks"
+      },
+      {
+        "listen": "0.0.0.0",
+        "port": 9080,
+        "protocol": "http",
+        "settings": {
+          "allowTransparent": true
+        },
+        "tag": "http"
+      },
+      {
+        "listen": "0.0.0.0",
+        "port": 6450,
+        "protocol": "dokodemo-door",
+        "settings": {
+          "address": "1.0.0.1",
+          "network": "tcp,udp",
+          "port": 53
+        },
+        "tag": "dns-in"
+      }
+    ],
+    "log": {
+      "loglevel": "error"
+    },
+    "outbounds": [
+      {
+        "domainStrategy": "UseIPv4",
+        "protocol": "vmess",
+        "settings": {
+          "vnext": [
+            {
+              "address": "150.136.91.11",
+              "port": 80,
+              "users": [
+                {
+                  "id": "b0940f87-2c9f-4fc9-9d06-750e2f94ba1e",
+                  "security": "auto"
+                }
+              ]
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "security": "none",
+          "wsSettings": {
+            "headers": {
+              "Host": "dl.kgvn.garenanow.com"
+            },
+            "path": "/zafkiel"
+          }
+        },
+        "tag": "Zafkiel / US (Oracle)"
+      },
+      {
+        "protocol": "freedom",
+        "tag": "direct"
+      },
+      {
+        "protocol": "freedom",
+        "tag": "bypass"
+      },
+      {
+        "protocol": "blackhole",
+        "tag": "block"
+      },
+      {
+        "protocol": "dns",
+        "settings": {
+          "address": "1.1.1.1",
+          "userLevel": 1
+        },
+        "tag": "dns-out"
+      }
+    ],
+    "ping": {
+      "disableIPv6": true,
+      "protocol": "unprivileged"
+    },
+    "policy": {
+      "levels": {
+        "1": {
+          "connIdle": 30
+        }
+      },
+      "system": {
+        "statsOutboundDownlink": true,
+        "statsOutboundUplink": true
+      }
+    },
+    "routing": {
+      "domainStrategy": "AsIs",
+      "rules": [
+        {
+          "inboundTag": [
+            "dns-in"
+          ],
+          "outboundTag": "dns-out",
+          "type": "field"
+        },
+        {
+          "outboundTag": "dns-out",
+          "protocol": [
+            "dns"
+          ],
+          "type": "field"
+        },
+        {
+          "ip": [
+            "35.215.183.30"
+          ],
+          "outboundTag": "direct",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "geoip:private"
+          ],
+          "outboundTag": "bypass",
+          "type": "field"
+        },
+        {
+          "ip": [
+            "255.255.255.255"
+          ],
+          "outboundTag": "block",
+          "type": "field"
+        }
+      ]
+    },
+    "stats": {}
+  }
