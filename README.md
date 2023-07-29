@@ -46,6 +46,7 @@ The one below is for testing only, you need to host the server yourself.
 ### v2rayNG (and almost all v2ray clients)
 
 > You can use subscription URL in v2rayNG, which is more convenient, by copying the URL in `raw` to the clipboard and paste it into the app.
+
 > Copy the whole content in the `config` URL or `raw` URL to the clipboard and paste it into the app.
 
 + [vpn-us](client/profile/v2rayng/vpn-us.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us.json)
