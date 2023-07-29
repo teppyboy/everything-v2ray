@@ -20,6 +20,7 @@ There are some preconfigured profiles for your convenience.
 #### [Android](https://sing-box.sagernet.org/installation/clients/sfa/) / [Windows](https://github.com/SagerNet/sing-box/releases) / [Linux](https://github.com/SagerNet/sing-box/releases) / [iOS](https://sing-box.sagernet.org/installation/clients/sfi/)
 
 > On Windows/Linux you need to start sing-box with administrator/root privilege.
+
 > Copy the URL in `raw` to the clipboard and paste it into the app.
 
 + [vpn-us](client/profile/sfa/vpn-us.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sfa/vpn-us.json)
