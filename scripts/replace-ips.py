@@ -41,6 +41,8 @@ def loop_replace(
                 print("[INFO] Skipping inbound")
                 continue
             new_config[key] = value.replace("127.0.0.1", ip).replace("localhost", ip)
+            if isinstance(name, str):
+                new_config[key] = new_config[key].replace("{name}", name)
     return new_config
 
 
