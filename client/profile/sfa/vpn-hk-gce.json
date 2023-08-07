@@ -1,44 +1,66 @@
 {
   "dns": {
+    "independent_cache": true,
+    "rules": [],
     "servers": [
       {
-        "tag": "cf",
-        "address": "tls://1.1.1.1",
-        "address_strategy": "prefer_ipv4",
-        "strategy": "prefer_ipv4"
+        "address": "1.1.1.1",
+        "address_resolver": "dns-direct",
+        "strategy": "ipv4_only",
+        "tag": "dns-remote"
       },
       {
-        "tag": "local",
-        "address": "223.5.5.5",
-        "detour": "direct-out"
+        "address": "203.113.131.1",
+        "address_resolver": "dns-local",
+        "detour": "direct",
+        "strategy": "ipv4_only",
+        "tag": "dns-direct"
+      },
+      {
+        "address": "local",
+        "detour": "direct",
+        "tag": "dns-local"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "dns-block"
       }
     ]
   },
   "inbounds": [
     {
-      "type": "tun",
-      "tag": "tun-in",
+      "listen": "127.0.0.1",
+      "listen_port": 6450,
+      "override_address": "1.1.1.1",
+      "override_port": 53,
+      "tag": "dns-in",
+      "type": "direct"
+    },
+    {
+      "domain_strategy": "",
+      "endpoint_independent_nat": true,
+      "inet4_address": [
+        "172.19.0.1/28"
+      ],
       "mtu": 9000,
-      "inet4_address": "172.20.0.1/30",
-      "auto_route": true,
-      "strict_route": true,
-      "exclude_package": "com.android.captiveportallogin",
-      "udp_timeout": 300,
-      "stack": "gvisor",
-      "platform": {
-        "http_proxy": {
-          "server": "35.215.183.30",
-          "server_port": 9080
-        }
-      },
-      "domain_strategy": "prefer_ipv4"
+      "sniff": false,
+      "sniff_override_destination": false,
+      "stack": "system",
+      "tag": "tun-in",
+      "type": "tun"
+    },
+    {
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "0.0.0.0",
+      "listen_port": 2080,
+      "tcp_fast_open": true
     }
   ],
   "outbounds": [
     {
       "type": "vmess",
       "tag": "vmess-out",
-      "udp_fragment": true,
       "domain_strategy": "prefer_ipv4",
       "server": "35.215.183.30",
       "server_port": 80,
@@ -53,22 +75,48 @@
       }
     },
     {
-      "type": "dns",
-      "tag": "dns-out"
+      "tag": "direct",
+      "type": "direct"
     },
     {
-      "type": "direct",
-      "tag": "direct-out"
+      "tag": "bypass",
+      "type": "direct"
+    },
+    {
+      "tag": "block",
+      "type": "block"
+    },
+    {
+      "tag": "dns-out",
+      "type": "dns"
     }
   ],
   "route": {
     "rules": [
       {
-        "port": 53,
+        "outbound": "dns-out",
+        "port": [
+          53
+        ]
+      },
+      {
+        "inbound": [
+          "dns-in"
+        ],
         "outbound": "dns-out"
+      },
+      {
+        "ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
+        "outbound": "block",
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ]
       }
     ],
     "auto_detect_interface": true
   }
 }
-
