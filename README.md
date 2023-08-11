@@ -6,16 +6,17 @@ For my personal usage
 
 ## Configuration
 
-There are currently 2 app configs
+There are currently 3 app configs
 
 + [Matsuri](client/config/matsuri.json)
++ [NekoBox for Android](client/config/nb4a.json)
 + [SagerNet](client/config/sagernet.json)
 
 ## Profile
 
 There are some preconfigured profiles for your convenience.
 
-### sing-box official app
+### sing-box official app / NB4A
 
 #### [Android](https://sing-box.sagernet.org/installation/clients/sfa/) / [Windows](https://github.com/SagerNet/sing-box/releases) / [Linux](https://github.com/SagerNet/sing-box/releases) / [iOS](https://sing-box.sagernet.org/installation/clients/sfi/)
 
@@ -31,9 +32,11 @@ The one below is for testing only, you need to host the server yourself.
 
 + [localhost](client/profile/sfa/test.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sfa/test.json)
 
-### SagerNet / Matsuri
+### SagerNet / Matsuri / NB4A
 
 > Copy the whole content in the `raw` URL to the clipboard and paste it into the app.
+
+> Semi-broken on NB4A
 
 + [vpn-us](client/profile/sagernet/vpn-us.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sagernet/vpn-us.json)
 + [vpn-hk-gce](client/profile/sagernet/vpn-hk-gce.json) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/sagernet/vpn-hk-gce.json)
@@ -52,7 +55,6 @@ The one below is for testing only, you need to host the server yourself.
 + [vpn-us](client/profile/v2rayng/vpn-us.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-us.json)
 + [vpn-hk-gce](client/profile/v2rayng/vpn-hk-gce.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-hk-gce) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-hk-gce.json)
 + [vpn-vn](client/profile/v2rayng/vpn-vn.json) - [config](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-vn) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/vpn-vn.json)
-
 + [subscription](client/profile/v2rayng/subscription.txt) - [raw](https://raw.githubusercontent.com/teppyboy/everything-v2ray/master/client/profile/v2rayng/subscription.txt)
 
 ## Certificate

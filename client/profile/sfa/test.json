@@ -1,60 +1,54 @@
 {
   "dns": {
-    "independent_cache": true,
-    "rules": [],
     "servers": [
       {
-        "address": "1.1.1.1",
-        "address_resolver": "dns-direct",
-        "strategy": "ipv4_only",
-        "tag": "dns-remote"
-      },
-      {
-        "address": "203.113.131.1",
+        "tag": "dns-remote",
+        "address": "https://1.1.1.1/dns-query",
         "address_resolver": "dns-local",
-        "detour": "direct",
-        "strategy": "ipv4_only",
-        "tag": "dns-direct"
+        "strategy": "ipv4_only"
       },
       {
+        "tag": "dns-local",
         "address": "local",
-        "detour": "direct",
-        "tag": "dns-local"
+        "detour": "direct"
       },
       {
-        "address": "rcode://success",
-        "tag": "dns-block"
+        "tag": "dns-block",
+        "address": "rcode://success"
       }
     ]
   },
   "inbounds": [
     {
-      "listen": "127.0.0.1",
-      "listen_port": 6450,
-      "override_address": "1.1.1.1",
-      "override_port": 53,
+      "type": "direct",
       "tag": "dns-in",
-      "type": "direct"
+      "listen": "0.0.0.0",
+      "listen_port": 6450,
+      "override_address": "8.8.8.8",
+      "override_port": 53
     },
     {
-      "domain_strategy": "",
-      "endpoint_independent_nat": true,
-      "inet4_address": [
-        "172.19.0.1/28"
-      ],
-      "mtu": 9000,
-      "sniff": false,
-      "sniff_override_destination": false,
-      "stack": "system",
+      "type": "tun",
       "tag": "tun-in",
-      "type": "tun"
+      "mtu": 9000,
+      "inet4_address": "172.19.0.1/28",
+      "auto_route": true,
+      "strict_route": true,
+      "exclude_package": "com.android.captiveportallogin",
+      "stack": "gvisor",
+      "platform": {
+        "http_proxy": {
+          "enabled": false,
+          "server": "127.0.0.1",
+          "server_port": 2080
+        }
+      }
     },
     {
       "type": "mixed",
       "tag": "mixed-in",
       "listen": "0.0.0.0",
-      "listen_port": 2080,
-      "tcp_fast_open": true
+      "listen_port": 2080
     }
   ],
   "outbounds": [
@@ -75,49 +69,46 @@
       }
     },
     {
-      "tag": "direct",
-      "type": "direct"
+      "type": "direct",
+      "tag": "direct"
     },
     {
-      "tag": "bypass",
-      "type": "direct"
+      "type": "direct",
+      "tag": "bypass"
     },
     {
-      "tag": "block",
-      "type": "block"
+      "type": "block",
+      "tag": "block"
     },
     {
-      "tag": "dns-out",
-      "type": "dns"
+      "type": "dns",
+      "tag": "dns-out"
     }
   ],
   "route": {
     "rules": [
       {
-        "outbound": "dns-out",
-        "port": [
-          53
-        ]
-      },
-      {
-        "inbound": [
-          "dns-in"
-        ],
+        "port": 53,
         "outbound": "dns-out"
       },
       {
+        "inbound": "dns-in",
+        "outbound": "dns-out"
+      },
+      {
+        "source_ip_cidr": [
+          "224.0.0.0/3",
+          "ff00::/8"
+        ],
         "ip_cidr": [
           "224.0.0.0/3",
           "ff00::/8"
         ],
-        "outbound": "block",
-        "source_ip_cidr": [
-          "224.0.0.0/3",
-          "ff00::/8"
-        ]
+        "outbound": "block"
       }
     ],
-    "auto_detect_interface": true
+    "auto_detect_interface": true,
+    "override_android_vpn": true
   }
 }
 

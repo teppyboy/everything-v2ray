@@ -5,8 +5,11 @@ from base64 import b64encode
 
 
 def bl_inbound(config: dict | str):
+    print("Checking", config)
     if isinstance(config, dict):
         if config.get("listen") in ["127.0.0.1", "localhost"]:
+            return True
+        elif config.get("server") in ["127.0.0.1", "localhost"]:
             return True
     elif isinstance(config, str):
         if config in ["127.0.0.1", "localhost"]:
@@ -23,7 +26,7 @@ def loop_replace(
 ):
     if not ancestor:
         ancestor = []
-    # print("Current ancestor:", ancestor)
+    print("Current ancestor:", ancestor)
     new_config = config
     for key, value in config.items():
         if isinstance(value, dict):
@@ -37,9 +40,10 @@ def loop_replace(
                         item, ip, name, local, ancestor=ancestor + [key]
                     )
         elif isinstance(value, str):
-            if bl_inbound(config=config):
+            if "inbounds" in ancestor and bl_inbound(config=config):
                 print("[INFO] Skipping inbound")
                 continue
+            print("Replacing value:", value)
             new_config[key] = value.replace("127.0.0.1", ip).replace("localhost", ip)
             if isinstance(name, str):
                 new_config[key] = new_config[key].replace("{name}", name)
