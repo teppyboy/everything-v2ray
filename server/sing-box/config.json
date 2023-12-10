@@ -57,9 +57,7 @@
       "udp_fragment": true,
       "udp_timeout": 300,
       "domain_strategy": "prefer_ipv4",
-      "up": "1 Gbps",
       "up_mbps": 1000,
-      "down": "1 Gbps",
       "down_mbps": 1000,
       "obfs": "love kurumi tokisaki",
       "users": [
