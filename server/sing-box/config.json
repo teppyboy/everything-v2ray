@@ -73,8 +73,8 @@
       "tls": {
         "enabled": true,
         "server_name": "Zafkiel",
-        "certificate_path": "cert.pem",
-        "key_path": "key.pem"
+        "certificate_path": "server/sing-box/cert.pem",
+        "key_path": "server/sing-box/key.pem"
       }
     }
   ],
